@@ -9,3 +9,5 @@ eureka.client.register-with-eureka=false
 eureka.client.fetch-registry=false
 eureka.client.serviceUrl.defaultZone=http://localhost:${server.port}/eureka/
 ```
+
+## 向入口程序添加@EnableDiscoveryClient注解，激活DiscoveryClient的实现，这样才能注册到注册中心上面。

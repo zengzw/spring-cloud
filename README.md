@@ -33,8 +33,32 @@ eureka.client.serviceUrl.defaultZone = http://localhost:1111/eureka/
 - Ribbon是一个基于HTTP和TCP客户端的负载均衡器。
 - Ribbon可以在通过客户端中配置的ribbonServerList服务端列表去轮询访问以达到均衡负载的作用。
 - 当Ribbon与Eureka联合使用时，ribbonServerList会被DiscoveryEnabledNIWSServerList重写，扩展成从Eureka注册中心中获取服务端列表。同时它也会用NIWSDiscoveryPing来取代IPing，它将职责委托给Eureka来确定服务端是否已经启动。
-### kktalk
 
+### pom
+```
+	<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-ribbon</artifactId>
+		</dependency>
+```
+### service代码
+```
+@Service
+public class ComputeService {
+    
+    @Autowired
+    RestTemplate template;
+    
+    @HystrixCommand(fallbackMethod = "addServiceFallback") //开启熔断
+    public String addService() {
+        return template.getForEntity("http://COMPUTE-SERVICE/add?a=10&b=20", String.class).getBody();
+    }
+    
+    public String addServiceFallback() {
+        return "error";
+    }
+}
+```
 
 ## Feign
 - Feign是一个声明式的Web Service客户端，它使得编写Web Serivce客户端变得更加简单。

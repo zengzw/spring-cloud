@@ -84,9 +84,11 @@ public class ServiceApplication {
 # 服务消费者 spring-cloud-robin-client
 
 ## Ribbon
-- Ribbon是一个基于HTTP和TCP客户端的负载均衡器。
-- Ribbon可以在通过客户端中配置的ribbonServerList服务端列表去轮询访问以达到均衡负载的作用。
-- 当Ribbon与Eureka联合使用时，ribbonServerList会被DiscoveryEnabledNIWSServerList重写，扩展成从Eureka注册中心中获取服务端列表。同时它也会用NIWSDiscoveryPing来取代IPing，它将职责委托给Eureka来确定服务端是否已经启动。
+- 简介
+	- Ribbon是一个基于HTTP和TCP客户端的负载均衡器。
+	- Ribbon可以在通过客户端中配置的ribbonServerList服务端列表去轮询访问以达到均衡负载的作用。
+	- 当Ribbon与Eureka联合使用时，ribbonServerList会被DiscoveryEnabledNIWSServerList重写，
+	 扩展成从Eureka注册中心中获取服务端列表。同时它也会用NIWSDiscoveryPing来取代IPing，它将职责委托给Eureka来确定服务端是否已经启动。
 
 - POM jar包
 ```
@@ -123,7 +125,7 @@ public class ComputeService {
 public class ClientApplication {
 
     @Bean
-    @LoadBalanced  //路由切换
+    @LoadBalanced  //负载均衡
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
@@ -150,9 +152,11 @@ eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1111/eureka/
 # spring-cloud-feign-clinet 客户端
 
 ## Feign
-
-- Feign是一个声明式的Web Service客户端，它使得编写Web Serivce客户端变得更加简单。
-- 我们只需要使用Feign来创建一个接口并用注解来配置它既可完成。它具备可插拔的注解支持，包括Feign注解和JAX-RS注解
+- 简介
+	- Feign是一个声明式的Web Service客户端，它使得编写Web Serivce客户端变得更加简单。
+	- 我们只需要使用Feign来创建一个接口并用注解来配置它既可完成。它具备可插拔的注解支持，包括Feign注解和JAX-RS注解
+	- Spring Cloud为Feign增加了对Spring MVC注解的支持，还`整合了Ribbon和Eureka来提供均衡负载的HTTP客户端实现`。
+	
 
 - POM jar包
 
@@ -179,7 +183,7 @@ public interface ComputeService {
 ```
 @EnableDiscoveryClient //该注释能激活DiscoveryClient的实现，实现controller中的信息输出
 @SpringBootApplication
-@EnableFeignClients
+@EnableFeignClients //@EnableFeignClients注解开启Feign功能，
 public class FeignClientApplication {
 
 	public static void main(String[] args) {
@@ -196,5 +200,47 @@ public class FeignClientApplication {
 pring.application.name=feign-consumer
 server.port=3334
 eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1111/eureka/
+```
+
+
+
+# Netflix Hystrix 端路器
+
+- 简介
+	- Spring Cloud中使用了Hystrix 来实现断路器的功能。
+	- Hystrix是Netflix开源的微服务框架套件之一，该框架目标在于通过控制那些访问远程系统、服务和第三方库的节点，从而对延迟和故障提供更强大的容错能力。
+	- Hystrix具备拥有回退机制和断路器功能的线程和信号隔离，请求缓存和请求打包，以及监控和配置等功能。
+	
+- 在eureka-ribbon的主类RibbonApplication中使用@EnableCircuitBreaker注解开启断路器功能：
+```
+@SpringBootApplication
+@EnableDiscoveryClient
+@EnableCircuitBreaker
+public class RibbonApplication {
+	@Bean
+	@LoadBalanced
+	RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+	public static void main(String[] args) {
+		SpringApplication.run(RibbonApplication.class, args);
+	}
+}
+```
+
+- 在使用ribbon消费服务的函数上增加@HystrixCommand注解来指定回调方法。
+``` 
+@Service
+public class ComputeService {
+    @Autowired
+    RestTemplate restTemplate;
+    @HystrixCommand(fallbackMethod = "addServiceFallback")
+    public String addService() {
+        return restTemplate.getForEntity("http://COMPUTE-SERVICE/add?a=10&b=20", String.class).getBody();
+    }
+    public String addServiceFallback() {
+        return "error";
+    }
+}
 ```
 

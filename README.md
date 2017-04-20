@@ -23,3 +23,5 @@ server.port=2222
 #指定要注册到上面的服务注册中心的位置
 eureka.client.serviceUrl.defaultZone = http://localhost:1111/eureka/	
 ```
+
+## 服务消费者 spring-cloud-client

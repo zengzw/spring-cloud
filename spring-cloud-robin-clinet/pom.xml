@@ -8,7 +8,7 @@
 		<version>3.0.0</version>
 	</parent>
 
-	<artifactId>spring-cloud-client</artifactId>
+	<artifactId>spring-cloud-robin-client</artifactId>
 
 	<name>springservice</name>
 	<description>Demo project for Spring Boot</description>

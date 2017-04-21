@@ -3,6 +3,10 @@
 - 说明
 	- Spring Cloud Config为服务端和客户端提供了分布式系统的外部化配置支持
 	- 配置服务器为各应用的所有环境提供了一个中心化的外部配置。
+	- Spring Cloud Config也提供本地存储配置的方式。  
+	我们只需要设置属性spring.profiles.active=native，Config Server会默认从应用的src/main/resource目录下检索配置文件。  
+	也可以通过spring.cloud.config.server.native.searchLocations=file:F:/properties/属性来指定配置文件的位置。  
+	虽然Spring Cloud Config提供了这样的功能，但是为了支持更好的管理内容和版本控制的功能，还是推荐使用git的方式。
 	
 - pom.xml中引入spring-cloud-config-server
 ```

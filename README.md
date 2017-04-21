@@ -204,7 +204,7 @@ eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1111/eureka/
 
 
 
-# Netflix Hystrix 端路器
+# Netflix Hystrix 断路器
 
 - 简介
 	- Spring Cloud中使用了Hystrix 来实现断路器的功能。

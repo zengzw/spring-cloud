@@ -21,6 +21,7 @@
 		<module>spring-cloud-robin-client</module>	
 		<module>spring-cloud-feign-clinet</module>	
 		<module>spring-config-server</module>	
+		<module>spring-config-client</module>			
 	</modules>
 
 	<properties>

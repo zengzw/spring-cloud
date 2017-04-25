@@ -399,9 +399,9 @@ eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
 
 
 ```  
-*其中api-a-url 是自己定义的，可以随意。请求的话，是path -> url的映射。*
+**其中api-a-url 是自己定义的，可以随意。请求的话，是path -> url的映射。**
 
-- *服务过滤*
+- **服务过滤**
  - 在服务网关中定义过滤器只需要继承ZuulFilter抽象类实现其定义的四个抽象函数就可对请求进行拦截与过滤。
  ```
 public class AccessFilter extends ZuulFilter{
@@ -426,7 +426,7 @@ public class AccessFilter extends ZuulFilter{
 
     
     /**
-     * <font color=gray size=5>返回一个boolean类型来判断该过滤器是否要执行，所以通过此函数可实现过滤器的开关。在上例中，我们直接返回true，所以该过滤器总是生效。</font>
+     * 返回一个boolean类型来判断该过滤器是否要执行，所以通过此函数可实现过滤器的开关。在上例中，我们直接返回true，所以该过滤器总是生效。
      */
     @Override
     public boolean shouldFilter() {

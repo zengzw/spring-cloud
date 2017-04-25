@@ -382,7 +382,7 @@ public class Application {
 }
 ```
 
-- <font color=#0099ff size=5>applicaiton.properties 配置文件</font>
+- **applicaiton.properties 配置文件**
 ```
 spring.application.name=api-gateway
 server.port=5555

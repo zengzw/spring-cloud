@@ -426,7 +426,7 @@ public class AccessFilter extends ZuulFilter{
 
     
     /**
-     * 返回一个boolean类型来判断该过滤器是否要执行，所以通过此函数可实现过滤器的开关。在上例中，我们直接返回true，所以该过滤器总是生效。
+     * <font color=gray size=5>返回一个boolean类型来判断该过滤器是否要执行，所以通过此函数可实现过滤器的开关。在上例中，我们直接返回true，所以该过滤器总是生效。</font>
      */
     @Override
     public boolean shouldFilter() {

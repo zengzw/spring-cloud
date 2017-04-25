@@ -353,7 +353,7 @@ class TestController {
 * Static Response handling
 * Active/Active traffic management
 
-- pom 文件
+- **pom 文件**
 ```
 <dependency>
     <groupId>org.springframework.cloud</groupId>
@@ -365,7 +365,7 @@ class TestController {
 </dependency>
 ```
 
-- application 入口
+- **application 入口**
 ```
 @EnableZuulProxy //注解开启Zuul
 @SpringCloudApplication //整合了@SpringBootApplication、@EnableDiscoveryClient、@EnableCircuitBreaker

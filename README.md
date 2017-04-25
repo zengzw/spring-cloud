@@ -382,7 +382,7 @@ public class Application {
 }
 ```
 
-- applicaiton.properties 配置文件
+- <font color=#0099ff size=5>applicaiton.properties 配置文件</font>
 ```
 spring.application.name=api-gateway
 server.port=5555
@@ -399,7 +399,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
 
 
 ```  
-**<font color=#0099ff size=5>其中api-a-url 是自己定义的，可以随意。请求的话，是path -> url的映射。</font>**
+**其中api-a-url 是自己定义的，可以随意。请求的话，是path -> url的映射。**
 
 - 服务过滤
  - 在服务网关中定义过滤器只需要继承ZuulFilter抽象类实现其定义的四个抽象函数就可对请求进行拦截与过滤。
@@ -459,5 +459,5 @@ public class AccessFilter extends ZuulFilter{
 
 ```
 
-- filterType生命周期
+- **filterType生命周期**
 ![avatar](http://blog.didispace.com/content/images/2016/07/687474703a2f2f6e6574666c69782e6769746875622e696f2f7a75756c2f696d616765732f7a75756c2d726571756573742d6c6966656379636c652e706e67.png)

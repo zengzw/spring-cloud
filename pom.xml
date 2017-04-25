@@ -18,10 +18,13 @@
 	<modules>
 		<module>spring-eureka</module>	
 		<module>spring-eureka-service</module>	
+		<module>spring-eureka-service-b</module>	
 		<module>spring-cloud-robin-client</module>	
 		<module>spring-cloud-feign-clinet</module>	
 		<module>spring-config-server</module>	
-		<module>spring-config-client</module>			
+		<module>spring-config-client</module>
+		<module>spring-zuul</module>			
+
 	</modules>
 
 	<properties>

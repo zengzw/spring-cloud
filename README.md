@@ -399,7 +399,7 @@ eureka.client.serviceUrl.defaultZone=http://localhost:1111/eureka/
 
 
 ```  
-**<font color=gray size=5>其中api-a-url 是自己定义的，可以随意。请求的话，是path -> url的映射。</font>**
+**<font color=#0099ff size=5>其中api-a-url 是自己定义的，可以随意。请求的话，是path -> url的映射。</font>**
 
 - 服务过滤
  - 在服务网关中定义过滤器只需要继承ZuulFilter抽象类实现其定义的四个抽象函数就可对请求进行拦截与过滤。

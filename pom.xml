@@ -17,6 +17,7 @@
 
 	<modules>
 		<module>spring-eureka</module>	
+		<module>spring-eureka-hight-available</module>	
 		<module>spring-eureka-service</module>	
 		<module>spring-eureka-service-b</module>	
 		<module>spring-cloud-robin-client</module>	

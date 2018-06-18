@@ -1,7 +1,7 @@
 # Spring zuul 服务网关
 
 ## 简介
-- Zuul的主要功能是路由和过滤器。路由功能是微服务的一部分。包括一下功能
+### Zuul的主要功能是路由和过滤器。路由功能是微服务的一部分。包括一下功能
 * Authentication
 * Insights
 * Stress Testing

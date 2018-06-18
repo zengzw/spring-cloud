@@ -121,3 +121,6 @@ public class AccessFilter extends ZuulFilter{
 
 - filterType生命周期
 ![avatar](http://blog.didispace.com/content/images/2016/07/687474703a2f2f6e6574666c69782e6769746875622e696f2f7a75756c2f696d616765732f7a75756c2d726571756573742d6c6966656379636c652e706e67.png)
+
+
+
